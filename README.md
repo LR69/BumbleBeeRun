@@ -17,12 +17,13 @@ On ne peut relancer un comptage que si les détecteurs S0 et S1 repassent tous l
 Le BumbleBeeRun est basé sur la configuration du projet [MiteThru](https://github.com/LR69/MiteThru). Il utilise la même architecture physique et matérielle :
 - Méme raspberry 3B+,
 - Même carte électronique d'interface homme/machine (Boutons poussoirs et voyants)
-A quelques différences prêt :
+
+à quelques différences près :
 - La caméra est inutile donc enlevée,
 - Deux barrières infrarouges S0 et S1 sont utilisées pour détecter les bourdons. 
 ![image](https://github.com/user-attachments/assets/48a0e50c-a81c-4fb1-bae5-7731898915fb)
   
 
-  Ces barrières infrarouges sont en fait des capteur de proximité (des [MH Infrared Obstacle Sensor "Flying Fish"](https://einstronic.com/product/infrared-obstacle-sensor-module/) dont les deux leds (émettrices et réceptrices), sont déssoudées et placées de part et d'autre du tube de sortie. La lumière infra rouge émise est modulée avec une fréquence de 38kHz pour limiter l'influence de l'éclairage environnant.
+  Ces barrières infrarouges sont en fait des capteurs de proximité (des [MH Infrared Obstacle Sensor "Flying Fish"](https://einstronic.com/product/infrared-obstacle-sensor-module/) dont les deux leds (émettrices et réceptrices), sont déssoudées et placées de part et d'autre du tube de sortie. La lumière infrarouge émise est modulée avec une fréquence de 38kHz pour limiter l'influence de l'éclairage environnant.
 
   
