@@ -9,6 +9,8 @@ On réalise une double barrière (S0 et S1) pour les bourdons. Les deux détecte
 Si Front sur S1 et S0 actif : comptage
 Si Front sur S0 et S1 actif : décomptage
 
+![image](https://github.com/user-attachments/assets/96b815f9-e86f-4203-bd4b-fadc0a39cfae)
+
 On ne peut relancer un comptage que si les détecteurs S0 et S1 repassent tous les deux à 0
 ## Configuration 
 
