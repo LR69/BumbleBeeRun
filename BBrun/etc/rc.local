@@ -1,0 +1,60 @@
+#!/bin/bash
+#
+# rc.local
+#
+# version miteThruv11 du 24/06/20
+which bash
+
+logfile=/var/log/miteThru.log
+
+exec 2>>$logfile     # send stderr from rc.local to a log file
+exec 1>>$logfile     # send stdout to the same log file
+set -x                         # tell sh to display commands before execution
+
+#echo ds1307 0x68 > /sys/class/i2c-adapter/i2c-1/new_device
+#sudo hwclock -s
+
+dt=`date '+%d/%m/%Y_%H:%M:%S'`
+echo "$dt"
+
+
+conf="/var/www/html/miteThru.conf"
+if [ -f $conf ]; then
+	source $conf
+	echo "paramètres issus du fichier de conf /var/www/html/miteThru.conf "
+else
+	freq=4
+	mode=video
+	seuil_video=2
+	duree_video=10
+	interval_video=300
+	echo "paramètres par défaut"
+fi
+
+# taille du fichier image en ko
+taille=`du -s /var/www/html/images_bugcount | cut -f1`
+tailleMax=1048576
+fichier="/root/Bugcount/BBrunV2.py"
+if [ -f $fichier ]; then
+	if [ "$mode" = "video" ] || [ "$mode" = "calib_en_ligne" ]; then
+		if [ $taille -gt $tailleMax ]; then
+			echo "$dt : Trop d'images sur la carte SD : Lancement de miteThru en mode normal"
+			python3 $fichier -Fe $freq -mode normal 1
+		else
+			echo "$dt : Lancement de miteThru en mode video"
+			python3 $fichier -Fe $freq -mode $mode $seuil_video $duree_video $interval_video
+		fi
+	elif [ "$mode" = "normal" ]; then
+		echo "$dt : Lancement de miteThru en mode normal"
+		python3 $fichier -Fe $freq -mode normal 0
+	elif [ "$mode" = "calib" ]; then
+		echo "$dt : Lancement de miteThru en mode calibration"
+		python3 $fichier -Fe $freq -mode calib 
+	else
+		echo "mode inconnu"
+	fi
+else
+  echo "Erreur : ficher $fichier introuvable"
+fi
+
+exit 0
