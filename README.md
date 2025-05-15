@@ -26,4 +26,18 @@ Le BumbleBeeRun est basé sur la configuration du projet [MiteThru](https://gith
 
   Ces barrières infrarouges sont en fait des capteurs de proximité (des [MH Infrared Obstacle Sensor "Flying Fish"](https://einstronic.com/product/infrared-obstacle-sensor-module/) dont les deux leds (émettrices et réceptrices), sont déssoudées et placées de part et d'autre du tube de sortie. La lumière infrarouge émise est modulée avec une fréquence de 38kHz pour limiter l'influence de l'éclairage environnant.
 
+## Interface Home Machine
+Le raspberry est configuré pour se connecter automatiquement en WiFi à un réseau local (SSID = "MiteMap"). Si un téléphone ou un ordinateur se connecte au même réseau WiFi, il peut se connecter aux différents BumbleBeeRun en saisissant leur adresse IP (192.168.2.101 ; 192.168.2.102 ; 192.168.2.103 ; ...) dans un navigateur web. 
+
+L’interface comporte : 
+### Une page principale :
+La page principale comporte :
+- Un champ numérique donnant la valeur actuelle de NBBout
+- Un graphique donnant l’évolution temporelle de NBBout 
+
+### Une page Record
+Lors d'un appui sur le bouton poussoir jaune "BP_Record" sur le raspberry, on enregistre à haute fréquence des deux détecteurs S0 et S1 ainsi que l’état de NBBout. Cette page comporte les liens de charger les fichiers ".csv" générés par l’appui sur BP_record.
+
+### Une page capteur
+Une page donnant l’état actuel des deux capteurs. 
   
